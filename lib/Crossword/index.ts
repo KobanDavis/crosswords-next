@@ -2,7 +2,7 @@ class Crossword {
 	private _solvedBoard: Crossword.Board
 	private _workingBoard: Crossword.Board
 	private _directionMap: Map<string, Crossword.AutoFocusDirection> = new Map()
-	private _previousDirection: Crossword.AutoFocusDirection = Crossword.AutoFocusDirection.ACROSS
+	private _previousDirection: Crossword.AutoFocusDirection = 'across'
 	private _solvedPositions: Set<string> = new Set()
 	private _solvedPhrases: Set<string> = new Set()
 
@@ -28,8 +28,8 @@ class Crossword {
 		const text = phrase.text.join('')
 		const indexes: Crossword.Position[] = []
 		for (let i = 0; i < text.length; i++) {
-			const x = phrase.x + (phrase.direction === Crossword.Direction.ACROSS ? i : 0)
-			const y = phrase.y + (phrase.direction === Crossword.Direction.DOWN ? i : 0)
+			const x = phrase.x + (phrase.direction === 'across' ? i : 0)
+			const y = phrase.y + (phrase.direction === 'down' ? i : 0)
 
 			indexes.push({ x, y })
 		}
@@ -48,11 +48,11 @@ class Crossword {
 			const { x, y } = phrase
 			const textLength = phrase.text.join('').length
 			switch (phrase.direction) {
-				case Crossword.Direction.ACROSS:
+				case 'across':
 					width = Math.max(width, x + textLength)
 					height = Math.max(height, y + 1)
 					break
-				case Crossword.Direction.DOWN:
+				case 'down':
 					height = Math.max(height, y + textLength)
 					width = Math.max(width, x + 1)
 					break
@@ -66,8 +66,8 @@ class Crossword {
 		this._phrases.forEach((phrase) => {
 			const word = phrase.text.join('').toUpperCase()
 			word.split('').forEach((letter, i) => {
-				const x = phrase.x + (phrase.direction === Crossword.Direction.ACROSS ? i : 0)
-				const y = phrase.y + (phrase.direction === Crossword.Direction.DOWN ? i : 0)
+				const x = phrase.x + (phrase.direction === 'across' ? i : 0)
+				const y = phrase.y + (phrase.direction === 'down' ? i : 0)
 
 				const prevValue = board[y][x]
 				if (prevValue === null) {
@@ -79,18 +79,10 @@ class Crossword {
 				}
 
 				const position = Crossword.toId(x, y)
-				if (this._directionMap.get(position) === Crossword.AutoFocusDirection.NONE) {
-					this._directionMap.set(
-						position,
-						phrase.direction === Crossword.Direction.ACROSS ? Crossword.AutoFocusDirection.ACROSS : Crossword.AutoFocusDirection.DOWN
-					)
-				} else if (this._directionMap.has(position)) {
-					this._directionMap.set(position, Crossword.AutoFocusDirection.BOTH)
+				if (this._directionMap.has(position)) {
+					this._directionMap.set(position, 'both')
 				} else {
-					this._directionMap.set(
-						position,
-						phrase.direction === Crossword.Direction.ACROSS ? Crossword.AutoFocusDirection.ACROSS : Crossword.AutoFocusDirection.DOWN
-					)
+					this._directionMap.set(position, phrase.direction === 'across' ? 'across' : 'down')
 				}
 			})
 		})
@@ -104,10 +96,10 @@ class Crossword {
 			for (let i = 0; i < phrase.text.join('').length; i++) {
 				const { x, y } = phrase
 				switch (phrase.direction) {
-					case Crossword.Direction.ACROSS:
+					case 'across':
 						board[y][x + i] = ''
 						break
-					case Crossword.Direction.DOWN:
+					case 'down':
 						board[y + i][x] = ''
 						break
 				}
@@ -135,7 +127,7 @@ class Crossword {
 		})
 
 		const newDirection = this._directionMap.get(Crossword.toId(x, y))
-		if (newDirection !== Crossword.AutoFocusDirection.BOTH) {
+		if (newDirection !== 'both') {
 			this._previousDirection = newDirection
 		}
 		this._onCellChange?.()
@@ -145,26 +137,16 @@ class Crossword {
 		const coords = Crossword.toId(x, y)
 		let direction = this._directionMap.get(coords)
 
-		if (direction === Crossword.AutoFocusDirection.BOTH) {
+		if (direction === 'both') {
 			direction = this._previousDirection
-			if (this._previousDirection === Crossword.AutoFocusDirection.NONE) {
-				if (this._workingBoard[y][x + 1] === '') {
-					direction = Crossword.AutoFocusDirection.ACROSS
-				} else if (this._workingBoard[y + 1][x] === '') {
-					direction = Crossword.AutoFocusDirection.DOWN
-				} else {
-					return null
-				}
-			}
 		}
 
 		switch (direction) {
-			case Crossword.AutoFocusDirection.ACROSS:
+			case 'across':
 				return { x: x + 1, y }
-			case Crossword.AutoFocusDirection.DOWN:
+			case 'down':
 				return { x, y: y + 1 }
-			case Crossword.AutoFocusDirection.BOTH:
-			case Crossword.AutoFocusDirection.NONE:
+			case 'both':
 				return null
 		}
 	}
@@ -173,26 +155,16 @@ class Crossword {
 		const coords = Crossword.toId(x, y)
 		let direction = this._directionMap.get(coords)
 
-		if (direction === Crossword.AutoFocusDirection.BOTH) {
+		if (direction === 'both') {
 			direction = this._previousDirection
-			if (this._previousDirection === Crossword.AutoFocusDirection.NONE) {
-				if (this._workingBoard[y][x + 1] === '') {
-					direction = Crossword.AutoFocusDirection.ACROSS
-				} else if (this._workingBoard[y + 1][x] === '') {
-					direction = Crossword.AutoFocusDirection.DOWN
-				} else {
-					return null
-				}
-			}
 		}
 
 		switch (direction) {
-			case Crossword.AutoFocusDirection.ACROSS:
+			case 'across':
 				return { x: x - 1, y }
-			case Crossword.AutoFocusDirection.DOWN:
+			case 'down':
 				return { x, y: y - 1 }
-			case Crossword.AutoFocusDirection.BOTH:
-			case Crossword.AutoFocusDirection.NONE:
+			case 'both':
 				return null
 		}
 	}
@@ -225,17 +197,9 @@ namespace Crossword {
 		height: number
 	}
 
-	export enum Direction {
-		ACROSS,
-		DOWN,
-	}
+	export type Direction = 'across' | 'down'
 
-	export enum AutoFocusDirection {
-		ACROSS,
-		DOWN,
-		BOTH,
-		NONE,
-	}
+	export type AutoFocusDirection = Direction | 'both'
 
 	export interface Phrase {
 		number: number

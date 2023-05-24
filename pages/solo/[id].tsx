@@ -3,9 +3,8 @@ import { useRouter } from 'next/router'
 import { useCrossword } from 'providers/Crossword'
 import { FC, useEffect } from 'react'
 import crosswords from 'crosswords.json'
-interface CrosswordProps {}
 
-const Crossword: FC<CrosswordProps> = (props) => {
+const Crossword: FC = () => {
 	const { loadCrossword, board } = useCrossword()
 	const router = useRouter()
 	const { id } = router.query

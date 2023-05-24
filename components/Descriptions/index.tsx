@@ -5,8 +5,8 @@ import { ArrowRightIcon, ArrowDownIcon, CheckIcon, XMarkIcon } from '@heroicons/
 import clsx from 'clsx'
 
 const directionIconMap = {
-	[Crossword.Direction.ACROSS]: <ArrowRightIcon className='h-4 w-4' />,
-	[Crossword.Direction.DOWN]: <ArrowDownIcon className='h-4 w-4' />,
+	across: <ArrowRightIcon className='h-4 w-4' />,
+	down: <ArrowDownIcon className='h-4 w-4' />,
 }
 
 interface DescriptionsProps {}
@@ -30,8 +30,8 @@ const Descriptions: FC<DescriptionsProps> = (props) => {
 			{Object.entries(phrasesByDirection).map(([direction, phrases]) => (
 				<div key={direction} className='flex flex-col py-2 px-4 rounded shadow-inner bg-violet-50 m-1'>
 					<div className='flex items-center font-bold text-lg'>
-						<span className='mr-1'>{Crossword.Direction[Number(direction) as Crossword.Direction]}</span>
-						{directionIconMap[Number(direction) as Crossword.Direction]}
+						<span className='mr-1'>{direction.toUpperCase()}</span>
+						{directionIconMap[direction]}
 					</div>
 					{phrases.map((phrase) => (
 						<div

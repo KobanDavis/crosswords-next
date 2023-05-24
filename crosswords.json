@@ -7,7 +7,7 @@
 			{
 				"number": 9,
 				"description": "Primate",
-				"direction": 0,
+				"direction": "across",
 				"text": ["ape"],
 				"x": 0,
 				"y": 11
@@ -15,7 +15,7 @@
 			{
 				"number": 8,
 				"description": "Taj Mahal location",
-				"direction": 1,
+				"direction": "down",
 				"text": ["agra"],
 				"x": 0,
 				"y": 8
@@ -23,7 +23,7 @@
 			{
 				"number": 8,
 				"description": "Garlic spread",
-				"direction": 0,
+				"direction": "across",
 				"text": ["aioli"],
 				"x": 0,
 				"y": 8
@@ -31,7 +31,7 @@
 			{
 				"number": 4,
 				"description": "Large marsupial",
-				"direction": 1,
+				"direction": "down",
 				"text": ["kangaroo"],
 				"x": 2,
 				"y": 2
@@ -39,7 +39,7 @@
 			{
 				"number": 7,
 				"description": "__ and the Giant Peach",
-				"direction": 0,
+				"direction": "across",
 				"text": ["james"],
 				"x": 1,
 				"y": 6
@@ -47,7 +47,7 @@
 			{
 				"number": 5,
 				"description": "Performed on stage",
-				"direction": 0,
+				"direction": "across",
 				"text": ["acted"],
 				"x": 2,
 				"y": 3
@@ -55,7 +55,7 @@
 			{
 				"number": 1,
 				"description": "Goes for a walk in nature",
-				"direction": 1,
+				"direction": "down",
 				"text": ["hikes"],
 				"x": 5,
 				"y": 0
@@ -63,7 +63,7 @@
 			{
 				"number": 3,
 				"description": "Things santa leaves",
-				"direction": 0,
+				"direction": "across",
 				"text": ["gifts"],
 				"x": 4,
 				"y": 1
@@ -71,7 +71,7 @@
 			{
 				"number": 2,
 				"description": "\"__, over here!\"",
-				"direction": 1,
+				"direction": "down",
 				"text": ["psst"],
 				"x": 8,
 				"y": 0
@@ -79,7 +79,7 @@
 			{
 				"number": 6,
 				"description": "Oak or elm, for example",
-				"direction": 0,
+				"direction": "across",
 				"text": ["tree"],
 				"x": 8,
 				"y": 3
@@ -94,7 +94,7 @@
 			{
 				"number": 9,
 				"description": "Primate",
-				"direction": 0,
+				"direction": "across",
 				"text": ["ape"],
 				"x": 0,
 				"y": 11
@@ -102,7 +102,7 @@
 			{
 				"number": 8,
 				"description": "Taj Mahal location",
-				"direction": 1,
+				"direction": "down",
 				"text": ["agra"],
 				"x": 0,
 				"y": 8
@@ -110,7 +110,7 @@
 			{
 				"number": 8,
 				"description": "Garlic spread",
-				"direction": 0,
+				"direction": "across",
 				"text": ["aioli"],
 				"x": 0,
 				"y": 8
@@ -118,7 +118,7 @@
 			{
 				"number": 4,
 				"description": "Large marsupial",
-				"direction": 1,
+				"direction": "down",
 				"text": ["kangaroo"],
 				"x": 2,
 				"y": 2
@@ -126,7 +126,7 @@
 			{
 				"number": 7,
 				"description": "__ and the Giant Peach",
-				"direction": 0,
+				"direction": "across",
 				"text": ["james"],
 				"x": 1,
 				"y": 6
@@ -134,7 +134,7 @@
 			{
 				"number": 5,
 				"description": "Performed on stage",
-				"direction": 0,
+				"direction": "across",
 				"text": ["acted"],
 				"x": 2,
 				"y": 3
@@ -142,7 +142,7 @@
 			{
 				"number": 1,
 				"description": "Goes for a walk in nature",
-				"direction": 1,
+				"direction": "down",
 				"text": ["hikes"],
 				"x": 5,
 				"y": 0
@@ -150,7 +150,7 @@
 			{
 				"number": 3,
 				"description": "Things santa leaves",
-				"direction": 0,
+				"direction": "across",
 				"text": ["gifts"],
 				"x": 4,
 				"y": 1
@@ -158,7 +158,7 @@
 			{
 				"number": 2,
 				"description": "\"__, over here!\"",
-				"direction": 1,
+				"direction": "down",
 				"text": ["psst"],
 				"x": 8,
 				"y": 0
@@ -166,7 +166,7 @@
 			{
 				"number": 6,
 				"description": "Oak or elm, for example",
-				"direction": 0,
+				"direction": "across",
 				"text": ["tree"],
 				"x": 8,
 				"y": 3

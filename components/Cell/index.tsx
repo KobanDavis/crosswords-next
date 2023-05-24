@@ -14,21 +14,26 @@ const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
 	const position = Crossword.toId(coords.x, coords.y)
 	const number = numberPositionMap[position]
 
-	const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-		const value = e.key.toUpperCase()
-		const keyIsLetter = value.match(/^[A-Z]{1}$/)
-		let nextCellCoords: Crossword.Position
-		if (keyIsLetter) {
-			crossword.updateCell(coords, value)
-			nextCellCoords = crossword.getNextCell(coords)
-		} else if (e.key === 'Backspace') {
-			crossword.updateCell(coords, '')
-			nextCellCoords = crossword.getPrevCell(coords)
-		}
-
+	const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value.toUpperCase()
+		const letter = value.charAt(value.length - 1)
+		const nextCellCoords = crossword.getNextCell(coords)
+		crossword.updateCell(coords, letter)
 		if (nextCellCoords) {
 			const { x, y } = nextCellCoords
 			document.getElementById(Crossword.toId(x, y))?.focus()
+		}
+	}
+
+	const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Backspace') {
+			e.preventDefault()
+			const nextCellCoords = crossword.getPrevCell(coords)
+			crossword.updateCell(coords, '')
+			if (nextCellCoords) {
+				const { x, y } = nextCellCoords
+				document.getElementById(Crossword.toId(x, y))?.focus()
+			}
 		}
 	}
 
@@ -41,6 +46,7 @@ const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
 				tabIndex={number ?? -1}
 				autoComplete='off'
 				value={letter}
+				onChange={handleOnChange}
 				onKeyDown={handleOnKeyDown}
 				style={{
 					width: cellSize - margin * 2,
