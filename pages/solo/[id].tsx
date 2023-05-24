@@ -2,7 +2,10 @@ import { Board, Descriptions } from 'components'
 import { useRouter } from 'next/router'
 import { useCrossword } from 'providers/Crossword'
 import { FC, useEffect } from 'react'
-import crosswords from 'crosswords.json'
+import _crosswords from 'crosswords.json'
+import { SelectCrossword } from 'types'
+
+const crosswords = _crosswords as SelectCrossword[]
 
 const Crossword: FC = () => {
 	const { loadCrossword, board } = useCrossword()
