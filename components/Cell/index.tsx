@@ -34,11 +34,11 @@ const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
 			const nextCellCoords = crossword.getPrevCell(coords)
 			if (letter) {
 				crossword.updateCell(coords, '')
-				onCellChange?.(coords, letter)
+				onCellChange?.(coords, '')
 			} else if (nextCellCoords) {
 				const { x, y } = nextCellCoords
 				crossword.updateCell(nextCellCoords, '')
-				onCellChange?.(nextCellCoords, letter)
+				onCellChange?.(nextCellCoords, '')
 
 				document.getElementById(Crossword.toId(x, y))?.focus()
 			}
