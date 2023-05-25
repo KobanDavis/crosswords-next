@@ -53,7 +53,9 @@ const Descriptions: FC<DescriptionsProps> = (props) => {
 								)}
 								<span className='font-semibold mr-1'>{phrase.number}.</span>
 							</div>
-							<span>{phrase.description}</span>
+							<span>
+								{phrase.description} ({phrase.text.map((word) => word.length).join(', ')})
+							</span>
 						</div>
 					))}
 				</div>
