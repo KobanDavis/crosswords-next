@@ -40,7 +40,12 @@ const Home: FC = () => {
 			if (localStorage.getItem('uuid') === null) {
 				localStorage.setItem('uuid', uuid())
 			}
-			const id = uuid()
+
+			const id = Array(6)
+				.fill(0)
+				.map((_) => Math.floor(Math.random() * 10))
+				.join('')
+
 			io(process.env.NEXT_PUBLIC_BACKEND_URL).emit('create_room', { roomId: id, crosswordId }, (created) => {
 				if (created) {
 					router.push(`/${mode}/${id}`)
