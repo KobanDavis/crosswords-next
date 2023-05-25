@@ -2,7 +2,7 @@ import { FC, useEffect, useMemo, useState } from 'react'
 
 import _crosswords from 'crosswords.json'
 import clsx from 'clsx'
-import { Stars } from 'components'
+import { Loading, Stars } from 'components'
 import { SelectCrossword } from 'types'
 import { ArrowRightIcon, CheckIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline'
 import { useRouter } from 'next/router'
@@ -27,6 +27,7 @@ const Home: FC = () => {
 	const [mode, setMode] = useState<Mode>('solo')
 	const [hideCompleted, setHideCompleted] = useState<boolean>(false)
 	const [completedPuzzles, setCompletedPuzzles] = useState(new Set<number>())
+	const [loading, setLoading] = useState<boolean>(false)
 
 	useEffect(() => {
 		const completedPuzzles = JSON.parse(localStorage.getItem('completedPuzzles'))
@@ -34,15 +35,22 @@ const Home: FC = () => {
 	}, [])
 
 	const startCrossword = () => {
-		let id: string | number = crosswordId
+		setLoading(true)
 		if (mode === 'online') {
 			if (localStorage.getItem('uuid') === null) {
 				localStorage.setItem('uuid', uuid())
 			}
-			id = uuid()
-			io(process.env.NEXT_PUBLIC_BACKEND_URL).emit('create_room', { roomId: id, crosswordId })
+			const id = uuid()
+			io(process.env.NEXT_PUBLIC_BACKEND_URL).emit('create_room', { roomId: id, crosswordId }, (created) => {
+				if (created) {
+					router.push(`/${mode}/${id}`)
+				} else {
+					setLoading(false)
+				}
+			})
+		} else {
+			router.push(`/${mode}/${crosswordId}`)
 		}
-		router.push(`/${mode}/${id}`)
 	}
 
 	const handleCrosswordClick = (id: number) => {
@@ -132,8 +140,14 @@ const Home: FC = () => {
 						</Button>
 					</div>
 					<Button disabled={crosswordId === null} onClick={startCrossword}>
-						<span className='mr-1'>{puzzleIsComplete ? 'Retry crossword' : 'Start crossword'}</span>
-						{puzzleIsComplete ? <ArrowUturnLeftIcon className='w-4 h-4' /> : <ArrowRightIcon className='w-4 h-4' />}
+						{loading === false ? (
+							<>
+								<span className='mr-1'>{puzzleIsComplete ? 'Retry crossword' : 'Start crossword'}</span>
+								{puzzleIsComplete ? <ArrowUturnLeftIcon className='w-4 h-4' /> : <ArrowRightIcon className='w-4 h-4' />}
+							</>
+						) : (
+							<Loading className='mx-8 my-0.5' size={5} />
+						)}
 					</Button>
 				</div>
 			</div>
