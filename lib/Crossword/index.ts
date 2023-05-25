@@ -12,13 +12,22 @@ class Crossword {
 		return new Array(height).fill(null).map((_) => new Array(width).fill(null))
 	}
 
+	public static toCoords(string: string): Crossword.Position {
+		const [x, y] = string.split('/').map(Number)
+		return { x, y }
+	}
+
 	public static toId(x: number, y: number): string
 	public static toId(number: number, direction: Crossword.Direction): string
 	public static toId(a: number, b: number | Crossword.Direction): string {
 		return [a, b].join('/')
 	}
 
-	constructor(private _phrases: Crossword.Phrase[], private _onCellChange?: () => void, private _onSolveCrossword?: () => void) {
+	constructor(
+		private _phrases: Crossword.Phrase[],
+		private _onCellChange?: (position: Crossword.Position, value: string) => void,
+		private _onSolveCrossword?: () => void
+	) {
 		this.dimensions = this._getBoardDimensions()
 		this._createSolvedBoard()
 		this._createEmptyBoard()
@@ -130,7 +139,7 @@ class Crossword {
 		if (newDirection !== 'both') {
 			this._previousDirection = newDirection
 		}
-		this._onCellChange?.()
+		this._onCellChange?.({ x, y }, value)
 	}
 
 	public getNextCell({ x, y }: Crossword.Position) {
@@ -141,17 +150,15 @@ class Crossword {
 			direction = this._previousDirection
 		}
 
-		switch (direction) {
-			case 'across':
-				return { x: x + 1, y }
-			case 'down':
-				return { x, y: y + 1 }
-			case 'both':
-				return null
-		}
+		if (direction === 'across') x++
+		if (direction === 'down') y++
+		if (direction === 'both') return null
+
+		return typeof this._solvedBoard?.[y]?.[x] === 'string' ? { x, y } : null
 	}
 
 	public getPrevCell({ x, y }: Crossword.Position) {
+		// big code duplication
 		const coords = Crossword.toId(x, y)
 		let direction = this._directionMap.get(coords)
 
@@ -159,14 +166,11 @@ class Crossword {
 			direction = this._previousDirection
 		}
 
-		switch (direction) {
-			case 'across':
-				return { x: x - 1, y }
-			case 'down':
-				return { x, y: y - 1 }
-			case 'both':
-				return null
-		}
+		if (direction === 'across') x--
+		if (direction === 'down') y--
+		if (direction === 'both') return null
+
+		return typeof this._solvedBoard?.[y]?.[x] === 'string' ? { x, y } : null
 	}
 
 	public getPreviousDirection() {

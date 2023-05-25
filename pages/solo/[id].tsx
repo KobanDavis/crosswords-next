@@ -4,11 +4,12 @@ import { useCrossword } from 'providers/Crossword'
 import { FC, useEffect } from 'react'
 import _crosswords from 'crosswords.json'
 import { SelectCrossword } from 'types'
+import CrosswordGame from 'components/CrosswordGame'
 
 const crosswords = _crosswords as SelectCrossword[]
 
 const Crossword: FC = () => {
-	const { loadCrossword, board } = useCrossword()
+	const { loadCrossword } = useCrossword()
 	const router = useRouter()
 	const { id } = router.query
 
@@ -19,16 +20,7 @@ const Crossword: FC = () => {
 		}
 	}, [id])
 
-	return (
-		<div className='flex flex-col md:flex-row justify-center items-center h-full min-h-screen'>
-			{board ? (
-				<>
-					<Board />
-					<Descriptions />
-				</>
-			) : null}
-		</div>
-	)
+	return <CrosswordGame />
 }
 
 export default Crossword

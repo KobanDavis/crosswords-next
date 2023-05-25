@@ -5,9 +5,11 @@ import clsx from 'clsx'
 import { Stars } from 'components'
 import { SelectCrossword } from 'types'
 import { ArrowRightIcon, CheckIcon, ArrowUturnLeftIcon } from '@heroicons/react/24/outline'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import Button from 'components/Button'
+import { XMarkIcon } from '@heroicons/react/24/solid'
+import { v4 as uuid } from 'uuid'
+import { io } from 'socket.io-client'
 
 type Mode = 'solo' | 'online'
 
@@ -32,11 +34,39 @@ const Home: FC = () => {
 	}, [])
 
 	const startCrossword = () => {
-		router.push(`/${mode}/${crosswordId}`)
+		let id: string | number = crosswordId
+		if (mode === 'online') {
+			if (localStorage.getItem('uuid') === null) {
+				localStorage.setItem('uuid', uuid())
+			}
+			id = uuid()
+			io(process.env.NEXT_PUBLIC_BACKEND_URL).emit('create_room', { roomId: id, crosswordId })
+		}
+		router.push(`/${mode}/${id}`)
 	}
 
 	const handleCrosswordClick = (id: number) => {
 		setCrosswordId(id === crosswordId ? null : id)
+	}
+
+	const markAsComplete = () => {
+		let complete = JSON.parse(localStorage.getItem('completedPuzzles'))
+		if (!complete) {
+			complete = []
+		}
+		complete.push(crosswordId)
+		localStorage.setItem('completedPuzzles', JSON.stringify(complete))
+		setCompletedPuzzles(new Set(complete))
+	}
+
+	const markAsIncomplete = () => {
+		const complete = JSON.parse(localStorage.getItem('completedPuzzles'))
+		const index = complete.findIndex((id) => id === crosswordId)
+		if (index !== -1) {
+			complete.splice(index, 1)
+		}
+		localStorage.setItem('completedPuzzles', JSON.stringify(complete))
+		setCompletedPuzzles(new Set(complete))
 	}
 
 	const puzzleIsComplete = completedPuzzles.has(crosswordId)
@@ -84,19 +114,28 @@ const Home: FC = () => {
 					))}
 				</div>
 			</div>
-			<div className='justify-items-end self-end flex max-sm:flex-col max-sm:self-auto items-center max-sm:space-y-2'>
-				<div className='flex items-center sm:mr-4'>
-					<Button className={clsx('rounded-r-none border-r-0', mode === 'solo' && 'bg-violet-500 text-white')} onClick={() => setMode('solo')}>
-						Solo
-					</Button>
-					<Button className={clsx('rounded-l-none border-l-0', mode === 'online' && 'bg-violet-500 text-white')} onClick={() => setMode('online')}>
-						Online
+			<div className='flex justify-between items-center w-full max-sm:flex-col'>
+				<Button className='max-sm:mb-2' disabled={crosswordId === null} onClick={puzzleIsComplete ? markAsIncomplete : markAsComplete}>
+					<span className='mr-1'>{puzzleIsComplete ? 'Mark as incomplete' : 'Mark as complete'}</span>
+					{puzzleIsComplete ? <XMarkIcon className='w-4 h-4' /> : <CheckIcon className='w-4 h-4' />}
+				</Button>
+				<div className='justify-items-end self-end flex max-sm:flex-col max-sm:self-auto items-center max-sm:space-y-2'>
+					<div className='flex items-center mr-4 max-sm:mr-0'>
+						<Button className={clsx('rounded-r-none border-r-0', mode === 'solo' && 'bg-violet-500 text-white')} onClick={() => setMode('solo')}>
+							Solo
+						</Button>
+						<Button
+							className={clsx('rounded-l-none border-l-0', mode === 'online' && 'bg-violet-500 text-white')}
+							onClick={() => setMode('online')}
+						>
+							Online
+						</Button>
+					</div>
+					<Button disabled={crosswordId === null} onClick={startCrossword}>
+						<span className='mr-1'>{puzzleIsComplete ? 'Retry crossword' : 'Start crossword'}</span>
+						{puzzleIsComplete ? <ArrowUturnLeftIcon className='w-4 h-4' /> : <ArrowRightIcon className='w-4 h-4' />}
 					</Button>
 				</div>
-				<Button disabled={crosswordId === null} onClick={startCrossword}>
-					<span className='mr-1'>{puzzleIsComplete ? 'Retry crossword' : 'Start crossword'}</span>
-					{puzzleIsComplete ? <ArrowUturnLeftIcon className='w-4 h-4' /> : <ArrowRightIcon className='w-4 h-4' />}
-				</Button>
 			</div>
 		</div>
 	)

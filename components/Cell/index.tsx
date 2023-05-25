@@ -10,7 +10,7 @@ interface CellProps {
 }
 
 const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
-	const { crossword, numberPositionMap, solvedPositions } = useCrossword()
+	const { crossword, numberPositionMap, solvedPositions, onCellChange } = useCrossword()
 	const position = Crossword.toId(coords.x, coords.y)
 	const number = numberPositionMap[position]
 
@@ -19,6 +19,8 @@ const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
 		const letter = value.charAt(value.length - 1)
 		const nextCellCoords = crossword.getNextCell(coords)
 		crossword.updateCell(coords, letter)
+
+		onCellChange?.(coords, letter)
 		if (nextCellCoords) {
 			const { x, y } = nextCellCoords
 			document.getElementById(Crossword.toId(x, y))?.focus()
@@ -28,10 +30,16 @@ const Cell: FC<CellProps> = ({ letter, coords, cellSize }) => {
 	const handleOnKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === 'Backspace') {
 			e.preventDefault()
+
 			const nextCellCoords = crossword.getPrevCell(coords)
-			crossword.updateCell(coords, '')
-			if (nextCellCoords) {
+			if (letter) {
+				crossword.updateCell(coords, '')
+				onCellChange?.(coords, letter)
+			} else if (nextCellCoords) {
 				const { x, y } = nextCellCoords
+				crossword.updateCell(nextCellCoords, '')
+				onCellChange?.(nextCellCoords, letter)
+
 				document.getElementById(Crossword.toId(x, y))?.focus()
 			}
 		}
