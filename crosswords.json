@@ -1,8 +1,8 @@
 [
 	{
 		"name": "Numero uno",
-		"id": 0,
-		"difficulty": 2,
+		"id": "numero-uno",
+		"difficulty": 1,
 		"puzzle": [
 			{
 				"number": 9,
@@ -83,6 +83,571 @@
 				"text": ["tree"],
 				"x": 8,
 				"y": 3
+			}
+		]
+	},
+	{
+		"name": "Totally original crossword No. 25",
+		"difficulty": 1,
+		"id": "tescos-25",
+		"puzzle": [
+			{
+				"text": ["OPPOSITE"],
+				"direction": "across",
+				"description": "Directly contrary",
+				"x": 0,
+				"y": 0,
+				"number": 1
+			},
+			{
+				"text": ["OCTOBER"],
+				"direction": "down",
+				"description": "One month before November",
+				"x": 0,
+				"y": 0,
+				"number": 1
+			},
+			{
+				"text": ["PERIL"],
+				"direction": "down",
+				"description": "Danger",
+				"x": 2,
+				"y": 0,
+				"number": 2
+			},
+			{
+				"text": ["SPARE", "TYRE"],
+				"direction": "down",
+				"description": "Extra wheel carried in a car",
+				"x": 4,
+				"y": 0,
+				"number": 3
+			},
+			{
+				"text": ["TEA"],
+				"direction": "down",
+				"description": "PG Tips drink",
+				"x": 6,
+				"y": 0,
+				"number": 4
+			},
+			{
+				"text": ["TAR"],
+				"direction": "across",
+				"description": "Black sticky material used on raods",
+				"x": 0,
+				"y": 2,
+				"number": 5
+			},
+			{
+				"text": ["ALARM"],
+				"direction": "across",
+				"description": "Burglar deterrent",
+				"x": 4,
+				"y": 2,
+				"number": 6
+			},
+			{
+				"text": ["MYSTERY"],
+				"direction": "down",
+				"description": "Unsolved problem",
+				"x": 8,
+				"y": 2,
+				"number": 7
+			},
+			{
+				"text": ["BELIEVERS"],
+				"direction": "across",
+				"description": "People with religious faith",
+				"x": 0,
+				"y": 4,
+				"number": 8
+			},
+			{
+				"text": ["EQUIP"],
+				"direction": "down",
+				"description": "Provide gear to",
+				"x": 6,
+				"y": 4,
+				"number": 9
+			},
+			{
+				"text": ["ROCKY"],
+				"direction": "across",
+				"description": "Covered in boulders",
+				"x": 0,
+				"y": 6,
+				"number": 10
+			},
+			{
+				"text": ["CAN"],
+				"direction": "down",
+				"description": "Food container",
+				"x": 2,
+				"y": 6,
+				"number": 11
+			},
+			{
+				"text": ["URE"],
+				"direction": "across",
+				"description": "Midge _, singer and charity campaigner",
+				"x": 6,
+				"y": 6,
+				"number": 12
+			},
+			{
+				"text": ["UNDERPAY"],
+				"direction": "across",
+				"description": "Give insufficient wages to",
+				"x": 1,
+				"y": 8,
+				"number": 13
+			}
+		]
+	},
+	{
+		"name": "Totally original crossword No. 26",
+		"difficulty": 1,
+		"id": "tescos-26",
+		"puzzle": [
+			{
+				"text": ["NICHE"],
+				"direction": "across",
+				"description": "Small alcove or recess",
+				"x": 0,
+				"y": 0,
+				"number": 1
+			},
+			{
+				"text": ["NOD"],
+				"direction": "down",
+				"description": "Move the head in agreement",
+				"x": 0,
+				"y": 0,
+				"number": 1
+			},
+			{
+				"text": ["CELLO"],
+				"direction": "down",
+				"description": "Large instrument of the violin family",
+				"x": 2,
+				"y": 0,
+				"number": 2
+			},
+			{
+				"text": ["EVIL"],
+				"direction": "down",
+				"description": "Wicked",
+				"x": 4,
+				"y": 0,
+				"number": 3
+			},
+			{
+				"text": ["PIN"],
+				"direction": "across",
+				"description": "Metal fastener",
+				"x": 6,
+				"y": 0,
+				"number": 4
+			},
+			{
+				"text": ["PAL"],
+				"direction": "down",
+				"description": "Friend, mate",
+				"x": 6,
+				"y": 0,
+				"number": 4
+			},
+			{
+				"text": ["NOTED"],
+				"direction": "down",
+				"description": "Jotted down",
+				"x": 8,
+				"y": 0,
+				"number": 5
+			},
+			{
+				"text": ["DEL"],
+				"direction": "across",
+				"description": "_ Monte, brand-name tinned fruit",
+				"x": 0,
+				"y": 2,
+				"number": 6
+			},
+			{
+				"text": ["INLET"],
+				"direction": "across",
+				"description": "Creek, small bay",
+				"x": 4,
+				"y": 2,
+				"number": 7
+			},
+			{
+				"text": ["SPOT"],
+				"direction": "across",
+				"description": "Face pimple",
+				"x": 0,
+				"y": 4,
+				"number": 8
+			},
+			{
+				"text": ["SCREW"],
+				"direction": "down",
+				"description": "Metal fastener",
+				"x": 0,
+				"y": 4,
+				"number": 8
+			},
+			{
+				"text": ["AVID"],
+				"direction": "across",
+				"description": "Very keen (reader)",
+				"x": 5,
+				"y": 4,
+				"number": 9
+			},
+			{
+				"text": ["VIDEO"],
+				"direction": "down",
+				"description": "Recording of a film or TV programme",
+				"x": 6,
+				"y": 4,
+				"number": 10
+			},
+			{
+				"text": ["WOLF"],
+				"direction": "down",
+				"description": "Wild dog-like mammal",
+				"x": 4,
+				"y": 5,
+				"number": 11
+			},
+			{
+				"text": ["RODEO"],
+				"direction": "across",
+				"description": "Cowboy competition",
+				"x": 0,
+				"y": 6,
+				"number": 12
+			},
+			{
+				"text": ["DUG"],
+				"direction": "down",
+				"description": "Used a spade",
+				"x": 2,
+				"y": 6,
+				"number": 13
+			},
+			{
+				"text": ["DUB"],
+				"direction": "across",
+				"description": "Add sound effects (to a film)",
+				"x": 6,
+				"y": 6,
+				"number": 14
+			},
+			{
+				"text": ["BAR"],
+				"direction": "down",
+				"description": "Pub counter",
+				"x": 8,
+				"y": 6,
+				"number": 15
+			},
+			{
+				"text": ["WIG"],
+				"direction": "across",
+				"description": "Artificial head of hair",
+				"x": 0,
+				"y": 8,
+				"number": 16
+			},
+			{
+				"text": ["FLOOR"],
+				"direction": "across",
+				"description": "Storey in a building",
+				"x": 4,
+				"y": 8,
+				"number": 17
+			}
+		]
+	},
+	{
+		"name": "Totally original crossword No. 27",
+		"difficulty": 2,
+		"id": "tescos-27",
+		"puzzle": [
+			{
+				"text": ["ULRIKA"],
+				"direction": "down",
+				"description": "First name of Swedish TV personality Ms Jonsson",
+				"x": 1,
+				"y": 0,
+				"number": 1
+			},
+			{
+				"text": ["STEP"],
+				"direction": "down",
+				"description": "Part of a staircase",
+				"x": 3,
+				"y": 0,
+				"number": 2
+			},
+			{
+				"text": ["SEIZE"],
+				"direction": "down",
+				"description": "Take forcibly",
+				"x": 5,
+				"y": 0,
+				"number": 3
+			},
+			{
+				"text": ["UTTER"],
+				"direction": "down",
+				"description": "Complete, absolute",
+				"x": 7,
+				"y": 0,
+				"number": 4
+			},
+			{
+				"text": ["ALEC"],
+				"direction": "across",
+				"description": "Smart _, know-all",
+				"x": 9,
+				"y": 0,
+				"number": 5
+			},
+			{
+				"text": ["ATOM"],
+				"direction": "down",
+				"description": "Small particle of matter",
+				"x": 9,
+				"y": 0,
+				"number": 5
+			},
+			{
+				"text": ["CASHMERE"],
+				"direction": "down",
+				"description": "Expensive woollen fabric",
+				"x": 12,
+				"y": 0,
+				"number": 6
+			},
+			{
+				"text": ["ILL", "TREAT"],
+				"direction": "across",
+				"description": "Behave cruely to",
+				"x": 0,
+				"y": 1,
+				"number": 7
+			},
+			{
+				"text": ["TOOK"],
+				"direction": "across",
+				"description": "Carried off",
+				"x": 7,
+				"y": 2,
+				"number": 8
+			},
+			{
+				"text": ["KONNIE"],
+				"direction": "down",
+				"description": "_ Huq, presenter of Blue Peter for ten years",
+				"x": 10,
+				"y": 2,
+				"number": 9
+			},
+			{
+				"text": ["WISP"],
+				"direction": "across",
+				"description": "Fine strand (of hair)",
+				"x": 0,
+				"y": 3,
+				"number": 10
+			},
+			{
+				"text": ["MOTH"],
+				"direction": "across",
+				"description": "Insect attracted to light",
+				"x": 9,
+				"y": 3,
+				"number": 11
+			},
+			{
+				"text": ["WEIRD"],
+				"direction": "across",
+				"description": "Bizarre, strange",
+				"x": 4,
+				"y": 4,
+				"number": 12
+			},
+			{
+				"text": ["WROTE"],
+				"direction": "down",
+				"description": "Communicated by letter",
+				"x": 4,
+				"y": 4,
+				"number": 12
+			},
+			{
+				"text": ["IN", "ONE"],
+				"direction": "down",
+				"description": "Got it _, understood straight away",
+				"x": 6,
+				"y": 4,
+				"number": 13
+			},
+			{
+				"text": ["DRESS"],
+				"direction": "down",
+				"description": "Frock, gown",
+				"x": 8,
+				"y": 4,
+				"number": 14
+			},
+			{
+				"text": ["TAPER"],
+				"direction": "across",
+				"description": "Get narrower towards one end",
+				"x": 0,
+				"y": 5,
+				"number": 15
+			},
+			{
+				"text": ["TEST", "TUBE"],
+				"direction": "down",
+				"description": "Glass cylinder used in chemistry",
+				"x": 0,
+				"y": 5,
+				"number": 15
+			},
+			{
+				"text": ["PIRATE"],
+				"direction": "down",
+				"description": "Robber who flies the Jolly Roger",
+				"x": 2,
+				"y": 5,
+				"number": 16
+			},
+			{
+				"text": ["RINSE"],
+				"direction": "across",
+				"description": "Wash in clean water",
+				"x": 8,
+				"y": 5,
+				"number": 17
+			},
+			{
+				"text": ["OZONE"],
+				"direction": "across",
+				"description": "Threatened atmospheric layer",
+				"x": 4,
+				"y": 6,
+				"number": 18
+			},
+			{
+				"text": ["SPRAT"],
+				"direction": "across",
+				"description": "Small herring-like fish",
+				"x": 0,
+				"y": 7,
+				"number": 19
+			},
+			{
+				"text": ["SIEGE"],
+				"direction": "across",
+				"description": "Blockade of a town",
+				"x": 8,
+				"y": 7,
+				"number": 20
+			},
+			{
+				"text": ["GRANNY"],
+				"direction": "down",
+				"description": "_ knot, reef knot gone wrong",
+				"x": 11,
+				"y": 7,
+				"number": 21
+			},
+			{
+				"text": ["EVENS"],
+				"direction": "across",
+				"description": "With equal stakes on both sides of a bet",
+				"x": 4,
+				"y": 8,
+				"number": 22
+			},
+			{
+				"text": ["VINYL"],
+				"direction": "down",
+				"description": "Kitchen flooring material",
+				"x": 5,
+				"y": 8,
+				"number": 23
+			},
+			{
+				"text": ["NOTCH"],
+				"direction": "down",
+				"description": "V-shaped cut or indentation",
+				"x": 7,
+				"y": 8,
+				"number": 24
+			},
+			{
+				"text": ["TUTU"],
+				"direction": "across",
+				"description": "Ballet skirt which juts our horizontally from the waist",
+				"x": 0,
+				"y": 9,
+				"number": 25
+			},
+			{
+				"text": ["UGLY"],
+				"direction": "down",
+				"description": "Very unattractive",
+				"x": 3,
+				"y": 9,
+				"number": 26
+			},
+			{
+				"text": ["CLAP"],
+				"direction": "across",
+				"description": "Hit your hands together",
+				"x": 9,
+				"y": 9,
+				"number": 27
+			},
+			{
+				"text": ["CATS"],
+				"direction": "down",
+				"description": "Feline creatures",
+				"x": 9,
+				"y": 9,
+				"number": 27
+			},
+			{
+				"text": ["EGAN"],
+				"direction": "across",
+				"description": "Peter _, veteran TV actor",
+				"x": 2,
+				"y": 10,
+				"number": 28
+			},
+			{
+				"text": ["YACHTING"],
+				"direction": "across",
+				"description": "Sailing for pleasure",
+				"x": 5,
+				"y": 11,
+				"number": 29
+			},
+			{
+				"text": ["ENVY"],
+				"direction": "across",
+				"description": "Jealous emotion",
+				"x": 0,
+				"y": 12,
+				"number": 30
 			}
 		]
 	}

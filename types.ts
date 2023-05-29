@@ -1,7 +1,7 @@
 import { Crossword } from 'lib'
 
 export interface SelectCrossword {
-	id: number
+	id: string
 	name: string
 	difficulty: 1 | 2 | 3
 	puzzle: Crossword.Phrase[]

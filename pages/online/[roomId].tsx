@@ -21,9 +21,9 @@ const Online: FC = () => {
 
 	useEffect(() => {
 		if (roomId !== undefined) {
-			socket.emit('join_room', { roomId, player: { id: localStorage.getItem('uuid'), name: 'not yet', crosswordId: 0 } }, setConnected)
+			socket.emit('join_room', { roomId, player: { id: localStorage.getItem('uuid'), name: 'player', crosswordId: 0 } }, setConnected)
 			socket.once('init', ({ positions, crosswordId }) => {
-				const crossword = crosswords.find((crossword) => crossword.id === Number(crosswordId))
+				const crossword = crosswords.find((crossword) => crossword.id === crosswordId)
 				loadCrossword(crossword.puzzle, positions)
 			})
 		}

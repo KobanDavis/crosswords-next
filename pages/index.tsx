@@ -23,10 +23,10 @@ const difficultyMap = {
 
 const Home: FC = () => {
 	const router = useRouter()
-	const [crosswordId, setCrosswordId] = useState<number>(null)
+	const [crosswordId, setCrosswordId] = useState<string>(null)
 	const [mode, setMode] = useState<Mode>('solo')
 	const [hideCompleted, setHideCompleted] = useState<boolean>(false)
-	const [completedPuzzles, setCompletedPuzzles] = useState(new Set<number>())
+	const [completedPuzzles, setCompletedPuzzles] = useState(new Set<string>())
 	const [loading, setLoading] = useState<boolean>(false)
 
 	useEffect(() => {
@@ -58,7 +58,7 @@ const Home: FC = () => {
 		}
 	}
 
-	const handleCrosswordClick = (id: number) => {
+	const handleCrosswordClick = (id: string) => {
 		setCrosswordId(id === crosswordId ? null : id)
 	}
 
@@ -86,7 +86,7 @@ const Home: FC = () => {
 
 	let puzzles = crosswords
 	if (hideCompleted) {
-		puzzles = puzzles.filter((_, i) => !completedPuzzles.has(i))
+		puzzles = puzzles.filter((puzzle) => !completedPuzzles.has(puzzle.id))
 	}
 	return (
 		<div className='flex flex-col w-full items-center h-screen p-4 overflow-hidden space-y-4'>

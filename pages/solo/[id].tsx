@@ -15,7 +15,7 @@ const Crossword: FC = () => {
 
 	useEffect(() => {
 		if (id !== undefined) {
-			const crossword = crosswords.find((crossword) => crossword.id === Number(id))
+			const crossword = crosswords.find((crossword) => crossword.id === id)
 			loadCrossword(crossword.puzzle)
 		}
 	}, [id])
