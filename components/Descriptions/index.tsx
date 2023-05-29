@@ -33,31 +33,33 @@ const Descriptions: FC<DescriptionsProps> = (props) => {
 						<span className='mr-1'>{direction.toUpperCase()}</span>
 						{directionIconMap[direction]}
 					</div>
-					{phrases.map((phrase) => (
-						<div
-							onClick={() => {
-								crossword.setPreviousDirection(phrase.direction as any)
-								document.getElementById(numberPositionMap[phrase.number]).focus()
-							}}
-							key={phrase.number}
-							className={clsx(
-								'flex items-start select-none',
-								solvedPhrases.has(Crossword.toId(phrase.number, phrase.direction)) ? 'text-green-500 ' : 'cursor-pointer'
-							)}
-						>
-							<div className='flex items-center'>
-								{solvedPhrases.has(Crossword.toId(phrase.number, phrase.direction)) ? (
-									<CheckIcon className='shrink-0 w-4 h-4 text-green-500 stroke-[3] mr-1' />
-								) : (
-									<XMarkIcon className='shrink-0 w-4 h-4 text-violet-400 stroke-[3] mr-1' />
+					{phrases
+						.sort((a, b) => a.number - b.number)
+						.map((phrase) => (
+							<div
+								onClick={() => {
+									crossword.setPreviousDirection(phrase.direction as any)
+									document.getElementById(numberPositionMap[phrase.number]).focus()
+								}}
+								key={phrase.number}
+								className={clsx(
+									'flex items-start select-none',
+									solvedPhrases.has(Crossword.toId(phrase.number, phrase.direction)) ? 'text-green-500 ' : 'cursor-pointer'
 								)}
-								<span className='font-semibold mr-1'>{phrase.number}.</span>
+							>
+								<div className='flex items-center'>
+									{solvedPhrases.has(Crossword.toId(phrase.number, phrase.direction)) ? (
+										<CheckIcon className='shrink-0 w-4 h-4 text-green-500 stroke-[3] mr-1' />
+									) : (
+										<XMarkIcon className='shrink-0 w-4 h-4 text-violet-400 stroke-[3] mr-1' />
+									)}
+									<span className='font-semibold mr-1'>{phrase.number}.</span>
+								</div>
+								<span>
+									{phrase.description} ({phrase.text.map((word) => word.length).join(', ')})
+								</span>
 							</div>
-							<span>
-								{phrase.description} ({phrase.text.map((word) => word.length).join(', ')})
-							</span>
-						</div>
-					))}
+						))}
 				</div>
 			))}
 		</div>
